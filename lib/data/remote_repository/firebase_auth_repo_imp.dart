@@ -15,16 +15,16 @@ class FirebaseAuthRepoImp extends FirebaseAuthRepo {
     try {
       final res = await service.callLogin(email, password);
 
-      if(res is String){
+      if (res is String) {
         return BaseResponseModel<dynamic>(
-            state: AppStateEnum.error,
-            message: res,
-            data: '');
-      }{
-      return BaseResponseModel<dynamic>(
-          state: AppStateEnum.success,
-          data: res,
-          message: ThemeConfig.strings.successLoggedIn);}
+            state: AppStateEnum.error, message: res, data: '');
+      }
+      {
+        return BaseResponseModel<dynamic>(
+            state: AppStateEnum.success,
+            data: res,
+            message: ThemeConfig.strings.successLoggedIn);
+      }
     } on ValidationException catch (e) {
       return BaseResponseModel<dynamic>(
           state: AppStateEnum.validationError, message: e.message, data: "");
@@ -46,19 +46,14 @@ class FirebaseAuthRepoImp extends FirebaseAuthRepo {
     try {
       final res = await service.callSignUp(name, email, password);
 
-      if(res is String){
-        return
-          BaseResponseModel<dynamic>(
-              state: AppStateEnum.error,
-              message: res,
-              data: '');
-
-      }else{
+      if (res is String) {
+        return BaseResponseModel<dynamic>(
+            state: AppStateEnum.error, message: res, data: '');
+      } else {
         return BaseResponseModel<dynamic>(
             state: AppStateEnum.success,
             data: res,
             message: ThemeConfig.strings.successLoggedIn);
-
       }
     } on ValidationException catch (e) {
       return BaseResponseModel<dynamic>(
@@ -95,7 +90,6 @@ class FirebaseAuthRepoImp extends FirebaseAuthRepo {
           state: AppStateEnum.error,
           message: ThemeConfig.strings.somethingWentWrong,
           data: '');
-      // rethrow;
     }
   }
 }

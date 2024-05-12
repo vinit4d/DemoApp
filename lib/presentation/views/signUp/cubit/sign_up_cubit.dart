@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import '../../../../data/remote_repository/firebase_auth_repo_imp.dart';
 import '../../../../domain/enums/app_state_enum.dart';
-
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
@@ -77,7 +76,9 @@ class SignUpCubit extends Cubit<SignUpState> {
         emit(SignUpErrorState(res.message!));
       }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 }
