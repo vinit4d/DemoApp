@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,7 +13,6 @@ class AppRoute {
   static const String loginRoute = "/LoginPage";
   static const String signUpRoute = "/SignupPage";
 
-
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case loginRoute:
@@ -22,7 +20,6 @@ class AppRoute {
             isLTR: true,
             child: BlocProvider(
                 create: (context) => LoginCubit(), child: LoginScreen()));
-
 
       case signUpRoute:
         return PageNavigation.push(
@@ -32,13 +29,12 @@ class AppRoute {
               child: SignUpScreen(),
             ));
 
-        case homeRoute:
-          Map<String, dynamic> data = settings.arguments as Map<String, dynamic>;
+      case homeRoute:
+        Map<String, dynamic> data = settings.arguments as Map<String, dynamic>;
         return PageNavigation.push(
-            isLTR: true,
-            child:   Home(name: data['name'],email: data['email']),
-            );
-
+          isLTR: true,
+          child: Home(name: data['name'], email: data['email']),
+        );
 
       default:
         return MaterialPageRoute(

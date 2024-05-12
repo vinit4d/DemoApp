@@ -4,12 +4,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../config/app_route.dart';
-
+import '../../../domain/shared/device.dart';
 import '../../../domain/shared/validators.dart';
 import '../../theme/theme_config.dart';
-
 import '../../widgets/app_use.dart';
 import '../../widgets/c_button.dart';
 import '../../widgets/c_text_field.dart';
@@ -166,10 +164,8 @@ class SignUpScreen extends StatelessWidget {
                                       !_formKey.currentState!.validate()
                                   ? null
                                   : () {
-
+                                DeviceUtils.hideKeyboard(context);
                                         cubit.signUpSubmit();
-                                        // Navigator.pushNamed(
-                                        //     context, AppRoute.otpRoute);
 
                                     },
                               color: ThemeConfig.colors.appColor,
@@ -186,7 +182,6 @@ class SignUpScreen extends StatelessWidget {
                         const Expanded(child: Divider()),
                       ]),
                       20.heightBox,
-                      // AppUse.socialMediaLogin(),
                       Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
@@ -226,40 +221,6 @@ class SignUpScreen extends StatelessWidget {
                                 ),
                               ),
                             )),
-
-                            //<---------------------- facebook login functionality --------------------->
-
-                            // const SizedBox(
-                            //   width: 15,
-                            // ),
-                            // Expanded(
-                            //     child: InkWell(
-                            //       onTap: () {},
-                            //       child: SizedBox(
-                            //         height: ThemeConfig.dimens.width / 10,
-                            //         child: Container(
-                            //           padding: EdgeInsets.all(10),
-                            //           decoration: BoxDecoration(
-                            //             border: Border.all(width: 0.2),
-                            //           ),
-                            //           child: Row(
-                            //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            //             children: [
-                            //               SvgPicture.asset(
-                            //                 'facebookIcon'.toSvg,
-                            //                 width: 20,
-                            //                 // Adjust the size of the logo as per your requirement
-                            //                 height: 20,
-                            //               ),
-                            //               Text(
-                            //                 ThemeConfig.strings.facebook,
-                            //                 style: ThemeConfig.styles.style14,
-                            //               )
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     )),
                           ]),
                       20.heightBox,
                     ],
