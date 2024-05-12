@@ -45,7 +45,6 @@ This document outlines the design specifications and patterns used for the Regis
 - Add forgot password functionality.
 
 ## Contributors
-- [Your Name]
-- [Your Team Members]
+- Vinit
 
 
