@@ -13,6 +13,12 @@ class SignUpSuccessState extends SignUpState {
 
   SignUpSuccessState(this.msg, this.data);
 }
+class SignUpSuccessGoogleState extends SignUpState {
+  final String msg;
+  final Map<String, dynamic> data;
+
+  SignUpSuccessGoogleState(this.msg, this.data);
+}
 
 //ignore: must_be_immutable
 class SignUpErrorState extends SignUpState {

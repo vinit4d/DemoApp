@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../../../data/remote_repository/firebase_auth_repo_imp.dart';
 import '../../../../domain/enums/app_state_enum.dart';
+
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
@@ -68,7 +69,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       final res = await service.socialMediaLogin();
 
       if (res.data != null) {
-        emit(SignUpSuccessState(res.message!, {
+        emit(SignUpSuccessGoogleState(res.message!, {
           'name': res.data.user!.displayName.toString(),
           'email': res.data.user!.email.toString()
         }));
