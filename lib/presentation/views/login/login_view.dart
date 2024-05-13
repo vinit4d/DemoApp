@@ -27,7 +27,14 @@ class LoginScreen extends StatelessWidget {
     LoginCubit cubit = context.watch<LoginCubit>();
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (BuildContext context, LoginState state) {
-
+        if (state is LoginSuccessGoogleState) {
+          SharedWidget.successSnackBar(context, state.msg);
+          Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoute.homeRoute,
+              arguments: state.data,
+              (route) => false);
+        }
         if (state is LoginSuccessState) {
           SharedWidget.successSnackBar(context, state.msg);
           Navigator.pushNamedAndRemoveUntil(
@@ -104,21 +111,23 @@ class LoginScreen extends StatelessWidget {
                           width: ThemeConfig.dimens.width,
                           height: 45,
                           child: CButton(
-                              title:
-                              state is LoginLoadingState ? Center(
-                                child: SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: CircularProgressIndicator(
-                                      color:
-                                      ThemeConfig.colors.whiteColor),
-                                ),
-                              ):
-                              Text(
-                                ThemeConfig.strings.signIn,
-                                style: ThemeConfig.styles.style14.copyWith(
-                                    color: ThemeConfig.colors.whiteColor),
-                              ),
+                              title: state is LoginLoadingState
+                                  ? Center(
+                                      child: SizedBox(
+                                        height: 30,
+                                        width: 30,
+                                        child: CircularProgressIndicator(
+                                            color:
+                                                ThemeConfig.colors.whiteColor),
+                                      ),
+                                    )
+                                  : Text(
+                                      ThemeConfig.strings.signIn,
+                                      style: ThemeConfig.styles.style14
+                                          .copyWith(
+                                              color: ThemeConfig
+                                                  .colors.whiteColor),
+                                    ),
                               onTap: !cubit.userInteracts() ||
                                       _formKey.currentState == null ||
                                       !_formKey.currentState!.validate()
@@ -183,40 +192,6 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                 ),
                               )),
-
-                              //<---------------------- facebook login functionality --------------------->
-
-                              // const SizedBox(
-                              //   width: 15,
-                              // ),
-                              // Expanded(
-                              //     child: InkWell(
-                              //       onTap: () {},
-                              //       child: SizedBox(
-                              //         height: ThemeConfig.dimens.width / 10,
-                              //         child: Container(
-                              //           padding: EdgeInsets.all(10),
-                              //           decoration: BoxDecoration(
-                              //             border: Border.all(width: 0.2),
-                              //           ),
-                              //           child: Row(
-                              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              //             children: [
-                              //               SvgPicture.asset(
-                              //                 'facebookIcon'.toSvg,
-                              //                 width: 20,
-                              //                 // Adjust the size of the logo as per your requirement
-                              //                 height: 20,
-                              //               ),
-                              //               Text(
-                              //                 ThemeConfig.strings.facebook,
-                              //                 style: ThemeConfig.styles.style14,
-                              //               )
-                              //             ],
-                              //           ),
-                              //         ),
-                              //       ),
-                              //     )),
                             ]),
                       ),
                       30.heightBox,

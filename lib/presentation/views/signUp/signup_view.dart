@@ -106,7 +106,6 @@ class SignUpScreen extends StatelessWidget {
                         },
                       ),
                       20.heightBox,
-
                       PTextField(
                         controller: cubit.cPassword,
                         observeText: cubit.observeText,
@@ -164,9 +163,8 @@ class SignUpScreen extends StatelessWidget {
                                       !_formKey.currentState!.validate()
                                   ? null
                                   : () {
-                                DeviceUtils.hideKeyboard(context);
-                                        cubit.signUpSubmit();
-
+                                      DeviceUtils.hideKeyboard(context);
+                                      cubit.signUpSubmit();
                                     },
                               color: ThemeConfig.colors.appColor,
                               titleStyle: ThemeConfig.styles.style16.copyWith(
@@ -260,6 +258,11 @@ class SignUpScreen extends StatelessWidget {
           Navigator.pushNamedAndRemoveUntil(
               context,
               AppRoute.loginRoute,
+              (route) => false);
+        }  if (state is SignUpSuccessGoogleState) {
+          Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoute.homeRoute,
               arguments: state.data,
               (route) => false);
         }

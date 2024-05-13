@@ -64,9 +64,9 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       final res = await service.socialMediaLogin();
 
-
+ print(res.data);
       if (res.data != null) {
-        emit(LoginSuccessState(res.message!, {
+        emit(LoginSuccessGoogleState(res.message!, {
           'name': res.data.user!.displayName.toString(),
           'email': res.data.user!.email.toString()
         }));

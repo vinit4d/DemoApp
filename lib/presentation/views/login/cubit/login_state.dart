@@ -15,6 +15,12 @@ class LoginSuccessState extends LoginState {
 
   LoginSuccessState(this.msg,this.data);
 }
+class LoginSuccessGoogleState extends LoginState {
+  final String msg;
+  final Map<String,dynamic> data;
+
+  LoginSuccessGoogleState(this.msg,this.data);
+}
 
 class LoginErrorState extends LoginState {
   final String msg;
