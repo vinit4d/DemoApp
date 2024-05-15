@@ -11,7 +11,7 @@ This document outlines the design specifications and patterns used for the Regis
 
 ### Patterns Utilized
 - **Bloc State Management Pattern**
-- **MVVM Design Pattern**
+- **Clean architecture Design Pattern**
 
 ## Features
 - **Validation Rules:**
@@ -27,7 +27,7 @@ This document outlines the design specifications and patterns used for the Regis
 - Bloc (Business Logic Component) pattern is utilized for managing the state of the application.
 - It ensures separation of concerns and facilitates testing and reusability.
 
-### MVVM Design Pattern
+### Clean architecture Design Pattern
 - MVVM (Model-View-ViewModel) pattern is employed for structuring the UI and its interactions.
 - It promotes a clear separation between the presentation logic and the UI.
 
