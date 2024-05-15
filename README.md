@@ -28,7 +28,7 @@ This document outlines the design specifications and patterns used for the Regis
 - It ensures separation of concerns and facilitates testing and reusability.
 
 ### Clean architecture Design Pattern
-- MVVM (Model-View-ViewModel) pattern is employed for structuring the UI and its interactions.
+- Clean architecture pattern is employed for structuring the UI and its interactions.
 - It promotes a clear separation between the presentation logic and the UI.
 
 ### Validations
