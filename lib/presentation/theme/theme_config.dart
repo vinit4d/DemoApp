@@ -9,7 +9,6 @@ class ThemeConfig {
   static late ScreenDimens dimens;
   static late AppStrings strings;
   static late AppTextStyle styles;
-
   static void init(BuildContext context) {
     ScreenDimens.init(context);
     colors = AppColors();
